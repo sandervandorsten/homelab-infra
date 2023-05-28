@@ -27,7 +27,7 @@ variable "vm_id" {
 
 variable "vm_name" {
   type        = string
-  description = "Name of the VM Node"
+  description = "Name of the VM Guest Node"
 }
 
 variable "vm_description" {
