@@ -42,9 +42,6 @@ source "proxmox" "ubuntu-server-jammy" {
     storage_pool      = "local-lvm"
     storage_pool_type = "lvm"
     type              = "scsi"
-#    type              = "virtio"
-    # TODO discard option missing? d
-
   }
 
   # VM CPU Settings

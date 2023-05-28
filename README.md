@@ -19,7 +19,7 @@ IaC for my Homelab VM images using Hashicorp Packer
 1. setup your `credentials.pkr.hcl` file using the configuration from your Proxmox server. see [this tutorial](https://www.youtube.com/watch?v=1nf3WOEFq1Y&t=1008s&ab_channel=ChristianLempa) (somewhere around 8:00) on how to set that up
 2. configure requirements for the VM template s.t. it works for you. This is heavily dependant on your proxmox installation and localization; I've copied as much as possible from the tutorial mentioned above  
 ```shell
-cd ubuntu-server-jammy-docker
+cd packer/ubuntu-server-jammy-docker
 packer init .
 packer fmt .
 packer validate \

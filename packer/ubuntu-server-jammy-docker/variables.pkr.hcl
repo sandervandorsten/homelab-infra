@@ -19,18 +19,18 @@ variable "node" {
 
 variable "vm_id" {
   type        = string
-  default     = "100"
+  default     = "105"
   description = "VM ID (number) of the node."
 }
 
 variable "vm_name" {
   type        = string
-  default     = "ubuntu-server-jammy"
+  default     = "ubuntu-docker-template"
   description = "Name of the VM Node"
 }
 
 variable "template_description" {
   type        = string
-  default     = "Ubuntu Server Jammy Image"
+  default     = "Ubuntu server with docker"
   description = "Description of the template"
 }
