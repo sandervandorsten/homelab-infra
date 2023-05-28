@@ -1,7 +1,11 @@
 # homelab-packer
-IaC for my Homelab VM images using Hashicorp Packer
+IaC for my Homelab 
+- VM images built using Packer
+- Deployment of VM images using Terraform
+- Virtualisation using proxmox
 
-### Resources
+
+### Resources/inspiration
 - https://github.com/ChristianLempa/boilerplates/tree/main/packer/proxmox/
 - https://www.youtube.com/watch?v=LCjuiIswXGs&list=PLT98CRl2KxKHnlbYhtABg6cF50bYa8Ulo&ab_channel=LearnLinuxTV
 
@@ -12,7 +16,7 @@ IaC for my Homelab VM images using Hashicorp Packer
   - `packer` (hashicorp)
   - `terraform` (hashicorp)
 
-# Deployment
+# Installation
 
 ## Create VM Templates in Proxmox
 ### setup
@@ -37,4 +41,11 @@ packer build \
 1. [Instructions](https://youtu.be/1nf3WOEFq1Y?t=1224)
 
 ### Terraform
-TBA
+1. setup your `credentials.auto.tfvars` file using the configuration from your Proxmox server. see [this tutorial](https://www.youtube.com/watch?v=1nf3WOEFq1Y&t=1008s&ab_channel=ChristianLempa) (somewhere around 8:00) on how to set that up
+
+```shell
+cd terraform
+terraform init
+terraform plan -var-file=variables.tfvars
+terraform apply -var-file=variables.tfvars -auto-approve
+```
