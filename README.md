@@ -20,6 +20,12 @@ IaC for my Homelab VM images using Hashicorp Packer
 2. configure requirements for the VM template s.t. it works for you. This is heavily dependant on your proxmox installation and localization; I've copied as much as possible from the tutorial mentioned above  
 ```shell
 cd ubuntu-server-jammy-docker
+packer init .
+packer fmt .
+packer validate \
+  -var-file=../credentials.pkr.hcl \
+  -var-file=variables.pkrvars.hcl \
+  .
 packer build \
   -var-file=../credentials.pkr.hcl \
   -var-file=variables.pkrvars.hcl \
