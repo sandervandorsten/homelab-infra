@@ -29,3 +29,13 @@ variable "gateway_ip" {
 variable "docker-server-config" {
   type = map(string)
 }
+
+variable "default_tags" {
+  description = "Default tags added to resources."
+  type        = map(string)
+  default = {
+    Maintainer  = "Sander van Dorsten"
+    Environment = "production"
+    Project     = "homelab"
+  }
+}
