@@ -31,6 +31,26 @@ resource "proxmox_vm_qemu" "ubuntu_docker_server" {
     model  = "virtio"
   }
 
+  disk {
+    backup      = 0
+    cache       = "none"
+    file        = "vm-${var.vm_id}-disk-0"
+    format      = "raw"
+    iothread    = 0
+    mbps        = 0
+    mbps_rd     = 0
+    mbps_rd_max = 0
+    mbps_wr     = 0
+    mbps_wr_max = 0
+    replicate   = 0
+    size        = "20G"
+    slot        = 0
+    ssd         = 0
+    storage     = "local-lvm"
+    type        = "scsi"
+    volume      = "local-lvm:vm-${var.vm_id}-disk-0"
+  }
+
   # VM Cloud-Init Settings
   os_type = "cloud-init"
 

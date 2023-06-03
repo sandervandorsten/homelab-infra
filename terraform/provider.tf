@@ -19,11 +19,11 @@ provider "proxmox" {
   # Skip TLS Verification because of the untrusted self-signed certificate
   pm_tls_insecure = true
 
-  #  pm_log_enable = true
-  #  pm_log_file   = "logs/terraform-plugin-proxmox.log"
-  #  pm_debug      = true
-  #  pm_log_levels = {
-  #    _default    = "debug"
-  #    _capturelog = ""
-  #  }
+  pm_log_enable = true
+  pm_log_file   = "logs/proxmox_run_${timestamp()}.log"
+  pm_debug      = true
+  pm_log_levels = {
+    _default    = "debug"
+    _capturelog = ""
+  }
 }

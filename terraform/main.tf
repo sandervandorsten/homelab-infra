@@ -9,8 +9,8 @@ module "k3s" {
   node_template         = var.docker-server-config.vm_template_name
   proxmox_resource_pool = "k3s"
 
-  network_gateway = "192.168.0.1"
-  lan_subnet      = "192.168.0.0/24"
+  network_gateway = var.gateway_ip
+  lan_subnet      = "192.168.178.0/24"
 
   support_node_settings = {
     cores  = 1
@@ -29,15 +29,16 @@ module "k3s" {
     memory = 2048
   }
 
+
   # 192.168.0.200 -> 192.168.0.207 (6 available IPs for nodes)
-  control_plane_subnet = "192.168.0.200/29"
+  control_plane_subnet = "192.168.178.200/29"
 
   node_pools = [
     {
       name = "default"
       size = 1
       # 192.168.0.208 -> 192.168.0.223 (14 available IPs for nodes)
-      subnet = "192.168.0.208/28"
+      subnet = "192.168.178.208/28"
     }
   ]
 }

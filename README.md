@@ -18,6 +18,9 @@ IaC for my Homelab
 
 # Installation
 
+# Proxmox manual configuration
+- download ubuntu 22.04 and 20.04 live server and store iso
+
 ## Create VM Templates in Proxmox
 ### setup
 1. setup your `credentials.pkr.hcl` file using the configuration from your Proxmox server. see [this tutorial](https://www.youtube.com/watch?v=1nf3WOEFq1Y&t=1008s&ab_channel=ChristianLempa) (somewhere around 8:00) on how to set that up
@@ -49,3 +52,7 @@ terraform init
 terraform plan -var-file=variables.tfvars
 terraform apply -var-file=variables.tfvars -auto-approve
 ```
+
+# Install K3s
+- create resource pool 'k3s' in proxmox cluster
+TODO add description
