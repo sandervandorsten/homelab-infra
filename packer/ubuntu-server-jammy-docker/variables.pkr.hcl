@@ -19,7 +19,7 @@ variable "node" {
 
 variable "vm_id" {
   type        = string
-  default     = "105"
+  default     = "106"
   description = "VM ID (number) of the node."
 }
 

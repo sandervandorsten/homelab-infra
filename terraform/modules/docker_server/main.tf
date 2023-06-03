@@ -25,6 +25,34 @@ resource "proxmox_vm_qemu" "ubuntu_docker_server" {
   # VM Memory Settings
   memory = var.memory
 
+  # Define Disk usage explicitly to help terraform detect changes
+  disk {
+    backup             = true
+    cache              = "none"
+    file               = "vm-${var.vm_id}-disk-0"
+    format             = "raw"
+    iops               = 0
+    iops_max           = 0
+    iops_max_length    = 0
+    iops_rd            = 0
+    iops_rd_max        = 0
+    iops_rd_max_length = 0
+    iops_wr            = 0
+    iops_wr_max        = 0
+    iops_wr_max_length = 0
+    iothread           = 0
+    mbps               = 0
+    mbps_rd            = 0
+    mbps_rd_max        = 0
+    mbps_wr            = 0
+    mbps_wr_max        = 0
+    replicate          = 0
+    size               = "20G"
+    storage            = "local-lvm"
+    type               = "scsi"
+    volume             = "local-lvm:vm-${var.vm_id}-disk-0"
+  }
+
   # VM Network Settings
   network {
     bridge = "vmbr0"
@@ -44,18 +72,4 @@ resource "proxmox_vm_qemu" "ubuntu_docker_server" {
   sshkeys = <<EOF
     ${var.ssh_key_public}
   EOF
-
-  # Create connection settings for doing executions using e.g. remote-exec provisioning
-  connection {
-    type        = "ssh"
-    user        = var.ciuser
-    host        = var.vm_ip_address
-    private_key = file("~/.ssh/id_rsa")
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo docker run -d   -p 9001:9001   --name portainer_agent   --restart=always   -v /var/run/docker.sock:/var/run/docker.sock   -v /var/lib/docker/volumes:/var/lib/docker/volumes   portainer/agent:2.18.3",
-    ]
-  }
 }
