@@ -10,6 +10,11 @@ variable "proxmox_api_token_secret" {
   type = string
 }
 
+variable "ssh_key_public_path" {
+  type        = string
+  description = "Path to the public key of the SSH key used for logging into the Virtual Machines"
+}
+
 variable "ssh_key_public" {
   type        = string
   description = "Public key of the SSH key used for logging into the Virtual Machines"
