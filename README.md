@@ -49,3 +49,7 @@ terraform init
 terraform plan -var-file=variables.tfvars
 terraform apply -var-file=variables.tfvars -auto-approve
 ```
+
+# Usage:
+### Amadeus: Ubuntu Docker Server - 22.04 LTS
+- comes pre-installed with portainer client

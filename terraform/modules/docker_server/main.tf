@@ -44,4 +44,18 @@ resource "proxmox_vm_qemu" "ubuntu_docker_server" {
   sshkeys = <<EOF
     ${var.ssh_key_public}
   EOF
+
+  # Create connection settings for doing executions using e.g. remote-exec provisioning
+  connection {
+    type        = "ssh"
+    user        = var.ciuser
+    host        = var.vm_ip_address
+    private_key = file("~/.ssh/id_rsa")
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo docker run -d   -p 9001:9001   --name portainer_agent   --restart=always   -v /var/run/docker.sock:/var/run/docker.sock   -v /var/lib/docker/volumes:/var/lib/docker/volumes   portainer/agent:2.18.3",
+    ]
+  }
 }
