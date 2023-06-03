@@ -5,6 +5,7 @@ resource "proxmox_vm_qemu" "ubuntu_docker_server" {
   vmid        = var.vm_id
   name        = var.vm_name
   desc        = var.vm_description
+  qemu_os     = "other"
 
   # VM Advanced General Settings
   onboot = true
